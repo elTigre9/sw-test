@@ -17,7 +17,10 @@ ReactDOM.render(
 reportWebVitals();
 
 window.addEventListener('load', async () => {
-  const sw = await navigator.serviceWorker.register('./sw.js').then((reg) => {
+  console.log('path: ', window.location.pathname);
+  console.log('origin: ', window.location.origin);
+  console.log('host: ', window.location.hostname);
+  const sw = await navigator.serviceWorker.register('/sw.js').then((reg) => {
     // registration successful
     console.log('sw registration was successful. Scope: ', reg.scope);
   }).catch(err => console.log('sw registration failed: ', err));
