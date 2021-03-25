@@ -1,5 +1,11 @@
 var schedule = require('node-schedule');
 
+// register first
+window.navigator.serviceWorkerContainer
+  .register('sw.js').then(function(reg) {
+    console.log(reg);
+  });
+
 // install the service worker
 var CACHE_NAME = 'test-site-cache-v1';
 var urlsToCache = [
