@@ -1,17 +1,17 @@
-const schedule = require('node-schedule');
+var schedule = require('node-schedule');
 
 // install the service worker
-const CACHE_NAME = 'test-site-cache-v1';
-const urlsToCache = [
+var CACHE_NAME = 'test-site-cache-v1';
+var urlsToCache = [
   '/',
   '/App.css',
   '/index.css'
 ];
 
-self.addEventListener('install', (event) => {
+self.addEventListener('install', function(event) {
   console.log('worker install event in progress...');
   event.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => {
+    caches.open(CACHE_NAME).then(function(cache) {
       console.log('Opened cache');
       return cache.addAll(urlsToCache);
     })
@@ -20,9 +20,9 @@ self.addEventListener('install', (event) => {
 
 if(window.Notification.permission === 'granted') {
   console.log('service twerker');
-  const job = schedule.scheduleJob('*/1 * * * *', () => {
+  var job = schedule.scheduleJob('*/1 * * * *', function() {
     console.log('run job');
-    const Notification = new Notification('snaps!', {
+    var Notification = new Notification('snaps!', {
       body: 'meow meow'
     })
   })
