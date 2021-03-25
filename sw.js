@@ -62,7 +62,7 @@ if(window.Notification.permission === 'granted') {
   console.log('service twerker');
   var job = schedule.scheduleJob('*/1 * * * *', function() {
     console.log('run job');
-    var Notification = new Notification('snaps!', {
+    var notification = new Notification('snaps!', {
       body: 'meow meow'
     })
   })
